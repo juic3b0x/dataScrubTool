@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +21,31 @@ export default function RootLayout({
             <head>
                 {/* Link tag for the favicon */}
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+                {/* Link to Font Awesome CSS */}
+                <link
+                    rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+                    integrity="sha512-epu9Bl9F5s94+40nRZJh/JR2FRH8kXPPKJ9uKJ8/RmYBwfpVtk7/Pmg7PbK8S5pkbXlEbB6oNpp1hZZU1NY6HA=="
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer"
+                />
             </head>
             <body className={inter.className}>
                 {children}
                 <footer className="bg-gray-800 p-4 text-white text-center">
                     <p>&copy; 2024 juic3b0x. All rights reserved.</p>
+                    {/* GitHub icon with link to the repository */}
+                    <a
+                        href="https://github.com/juic3b0x/dataScrubTool"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-block text-white"
+                    >
+                        <i
+                            className="fab fa-github fa-2x"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
                     <p>
                         MOTOROLA, the Stylized M Logo, MOTO, and the MOTO family
                         of marks are trademarks of Motorola Trademark Holdings,
