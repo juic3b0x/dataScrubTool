@@ -1,13 +1,16 @@
+/* Import Tailwind's base, components, and utilities layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Define root variables for color schemes */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
 
+/* Define dark mode variables */
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -16,18 +19,43 @@
   }
 }
 
+/* Set foreground and background colors based on color scheme preferences */
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
 }
 
+/* Utilities layer for additional classes */
 @layer utilities {
+  /* Balance text wrapping */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Additional utility classes */
+  /* Class for center-aligning text horizontally and vertically */
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Class for rounded buttons */
+  .rounded-button {
+    border-radius: 8px;
+  }
+
+  /* Class for responsive font sizes */
+  .responsive-font {
+    font-size: clamp(1rem, 1.5vw, 2rem);
+  }
+
+  /* Class for box shadows */
+  .shadow-box {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
