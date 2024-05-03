@@ -1,7 +1,7 @@
-# Motorola get_unlock_data Scrubber
+# Motorola dataScrubTool
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjuic3b0x%2Fbootloader-scrubber.git)
 
-Welcome to the Motorola get_unlock_data Scrubber project! This project provides a tool that scrubs data output from the command `fastboot oem get_unlock_data` for Motorola bootloader unlocking. It removes unwanted prefixes and whitespace, and concatenates all lines into a single line for ease of use.
+Welcome to the Motorola dataScrubTool project! This project provides a tool that scrubs data output from the command `fastboot oem get_unlock_data` for Motorola bootloader unlocking. It removes unwanted prefixes and whitespace, and concatenates all lines into a single line for ease of use.
 
 ## Features
 
@@ -71,8 +71,10 @@ Contributions are welcome! If you'd like to contribute to the project, please fo
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
+MOTOROLA, the Stylized M Logo, MOTO, and the MOTO family of marks are trademarks of Motorola Trademark Holdings, LLC. LENOVO is a trademark of Lenovo. All other trademarks are the property of their respective owners.
+
 ## Contact
 
 If you have any questions or issues with the project, feel free to open an issue on the [GitHub repository](https://github.com/juic3b0x/bootloader-scrubber) or contact the project maintainers.
 
-Thank you for using the Motorola get_unlock_data Scrubber!
+Thank you for using the Motorola dataScrubTool!

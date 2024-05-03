@@ -40,14 +40,14 @@ export default function Home() {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4 text-white">
-                Motorola get_unlock_data Scrubber
+                Motorola dataScrubTool
             </h1>
             <div className="mb-4">
                 <label
                     htmlFor="input_data"
                     className="block text-sm font-medium text-white"
                 >
-                    Paste get_unlock_data output:
+                    Paste output from get_unlock_data:
                 </label>
                 <textarea
                     id="input_data"
