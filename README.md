@@ -1,5 +1,5 @@
 # Motorola dataScrubTool
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjuic3b0x%2Fbootloader-scrubber.git)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjuic3b0x%2FdataScrubTool.git)
 
 Welcome to the Motorola dataScrubTool project! This project provides a tool that scrubs data output from the command `fastboot oem get_unlock_data` for Motorola bootloader unlocking. It removes unwanted prefixes and whitespace, and concatenates all lines into a single line for ease of use.
 
@@ -20,13 +20,13 @@ To run this project locally, follow these steps:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/juic3b0x/bootloader-scrubber.git
+    git clone https://github.com/juic3b0x/dataScrubTool.git
     ```
 
 2. **Navigate to the project directory**:
 
     ```bash
-    cd bootloader-scrubber
+    cd dataScrubTool
     ```
 
 3. **Install dependencies**:
@@ -75,6 +75,6 @@ MOTOROLA, the Stylized M Logo, MOTO, and the MOTO family of marks are trademarks
 
 ## Contact
 
-If you have any questions or issues with the project, feel free to open an issue on the [GitHub repository](https://github.com/juic3b0x/bootloader-scrubber) or contact the project maintainers.
+If you have any questions or issues with the project, feel free to open an issue on the [GitHub repository](https://github.com/juic3b0x/dataScrubTool) or contact the project maintainers.
 
 Thank you for using the Motorola dataScrubTool!
