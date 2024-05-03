@@ -35,6 +35,7 @@ export default function RootLayout({
                 </footer>
                 <SpeedInsights />
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
