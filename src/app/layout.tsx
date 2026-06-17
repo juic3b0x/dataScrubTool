@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { library, IconProp, config } from "@fortawesome/fontawesome-svg-core";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
-
-library.add(faGithub);
-
-const inter = Inter({ subsets: ["latin"] });
-
-// @ts-ignore
-const githubIcon: IconProp = "fa-brands fa-github";
 
 export const metadata: Metadata = {
     title: "Motorola dataScrubTool",
@@ -32,7 +24,7 @@ export default function RootLayout({
                 {/* Link tag for the favicon */}
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
             </head>
-            <body className={inter.className}>
+            <body>
                 {children}
                 <footer className="bg-gray-800 p-4 text-white text-center">
                     <div className="flex justify-center items-center space-x-2">
@@ -45,7 +37,7 @@ export default function RootLayout({
                             className="flex items-center"
                         >
                             {/* GitHub SVG icon */}
-                            <FontAwesomeIcon icon={githubIcon} />
+                            <FontAwesomeIcon icon={faGithub} />
                         </a>
                     </div>
                     <p className="mt-2">
