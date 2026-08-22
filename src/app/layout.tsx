@@ -28,7 +28,7 @@ export default function RootLayout({
                 {children}
                 <footer className="bg-gray-800 p-4 text-white text-center">
                     <div className="flex justify-center items-center space-x-2">
-                        <p>&copy; 2024 juic3b0x. All rights reserved.</p>
+                        <p>&copy; 2024–{new Date().getFullYear()} juic3b0x. All rights reserved.</p>
                         {/* GitHub icon with link to the repository */}
                         <a
                             href="https://github.com/juic3b0x/dataScrubTool"
