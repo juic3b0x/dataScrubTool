@@ -1,0 +1,11 @@
+# CODEOWNERS
+# Global owners — these users/teams are required reviewers for all files
+* @juic3b0x
+
+# TypeScript source files
+*.ts @juic3b0x
+
+# Configuration files require explicit review
+*.json @juic3b0x
+*.yml @juic3b0x
+*.yaml @juic3b0x
