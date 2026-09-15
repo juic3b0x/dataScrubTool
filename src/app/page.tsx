@@ -2,106 +2,133 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
-    const [inputData, setInputData] = useState("");
-    const [scrubbedLine, setScrubbedLine] = useState("");
+    const [inputData, setInputData] = useState<string>("");
+    const [scrubbedLine, setScrubbedLine] = useState<string>("");
 
-    // Function to scrub the bootloader data
-    const scrubBootloader = () => {
-        // Split the input data into lines
+    const scrubBootloader = (): void => {
         const lines = inputData.split("\n");
 
-        // Process each line: remove '(bootloader)', 'Unlockdata:', and whitespace, then concatenate the lines
-        const scrubbedLine = lines
-            .map(line => {
-                // Remove '(bootloader)', 'Unlockdata:', and whitespace
+        const scrubbed = lines
+            .map((line: string) => {
                 let cleanLine = line
-                    .replace("(bootloader)", "")
+                    .replace(/\(bootloader\)/g, "")
                     .replace(/\s/g, "");
+
                 if (cleanLine.startsWith("Unlockdata:")) {
                     cleanLine = cleanLine.replace("Unlockdata:", "");
                 }
+
                 return cleanLine;
             })
             .join("");
 
-        // Set the scrubbed line
-        setScrubbedLine(scrubbedLine);
+        setScrubbedLine(scrubbed);
     };
 
-    // Function to copy the scrubbed data to clipboard
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(scrubbedLine);
+    const copyToClipboard = async (): Promise<void> => {
+        if (!scrubbedLine) {
+            return;
+        }
+
+        await navigator.clipboard.writeText(scrubbedLine);
         alert("Scrubbed data copied to clipboard!");
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4 text-white">
+        <main className="mx-auto min-h-screen w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <h1 className="mb-8 text-3xl font-bold text-accent">
                 Motorola dataScrubTool
             </h1>
-            <div className="mb-4">
-                <label
-                    htmlFor="input_data"
-                    className="block text-sm font-medium text-white"
-                >
-                    Paste output from get_unlock_data:
-                </label>
-                <textarea
-                    id="input_data"
-                    name="input_data"
-                    rows={5}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-black text-white"
-                    value={inputData}
-                    onChange={e => setInputData(e.target.value)}
-                />
-                <button
-                    onClick={scrubBootloader}
-                    className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md"
-                >
-                    Submit
-                </button>
-            </div>
-            <h2 className="text-xl font-bold mb-2 text-white">
-                Scrubbed Line:
-            </h2>
-            <div className="flex items-center">
-                <textarea
-                    id="output_data"
-                    rows={5}
-                    className="w-full rounded-md border-gray-300 shadow-sm bg-black text-white"
-                    readOnly
-                    value={scrubbedLine}
-                />
-                <button
-                    onClick={copyToClipboard}
-                    className="ml-2 px-4 py-2 bg-green-600 text-white rounded-md"
-                >
-                    Copy
-                </button>
-            </div>
 
-            {/* Instructions section */}
-            <div className="mt-6 p-4 bg-black rounded-md text-white">
-                <h3 className="text-lg font-bold">Instructions:</h3>
-                <p className="mt-2">
+            <section className="mb-8">
+                <h2 className="mb-3 text-xl font-bold text-white">
+                    Paste output from get_unlock_data:
+                </h2>
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                    <textarea
+                        id="input_data"
+                        name="input_data"
+                        rows={7}
+                        value={inputData}
+                        onChange={(event) =>
+                            setInputData(event.target.value)
+                        }
+                        placeholder="Paste your fastboot oem get_unlock_data output here..."
+                        aria-label="Motorola bootloader unlock data"
+                        className="min-h-40 flex-1"
+                    />
+
+                    <button
+                        type="button"
+                        onClick={scrubBootloader}
+                        className="w-full rounded-lg bg-secondary px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-primary focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 sm:w-auto"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </section>
+
+            <section className="mb-8">
+                <h2 className="mb-3 text-xl font-bold text-white">
+                    Scrubbed Line:
+                </h2>
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                    <textarea
+                        id="output_data"
+                        name="output_data"
+                        rows={7}
+                        readOnly
+                        value={scrubbedLine}
+                        placeholder="Your scrubbed unlock data will appear here..."
+                        aria-label="Scrubbed Motorola bootloader unlock data"
+                        className="min-h-40 flex-1 font-mono"
+                    />
+
+                    <button
+                        type="button"
+                        onClick={copyToClipboard}
+                        disabled={!scrubbedLine}
+                        className="w-full rounded-lg bg-secondary px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-primary focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+                    >
+                        Copy
+                    </button>
+                </div>
+            </section>
+
+            <section className="rounded-lg bg-primary p-5 text-white shadow-box sm:p-6">
+                <h3 className="text-xl font-bold">
+                    Instructions:
+                </h3>
+
+                <p className="mt-3">
                     Copy and paste the output of the command:
                 </p>
-                <p className="font-mono text-white">
-                    &apos;fastboot oem get_unlock_data&apos;
+
+                <p className="mt-2 rounded-md bg-black/30 p-3 font-mono text-sm text-accent">
+                    fastboot oem get_unlock_data
                 </p>
-                <p className="mt-2">into the text area.</p>
-                <h4 className="mt-4 font-semibold">Example:</h4>
-                <pre className="bg-black p-2 rounded-md text-sm text-white">
-                    (bootloader) 0A40040192024205#4C4D3556313230{"\n"}
-                    (bootloader) 30373731363031303332323239#BD00{"\n"}
-                    (bootloader) 8A672BA4746C2CE02328A2AC0C39F95{"\n"}
-                    (bootloader) 1A3E5#1F53280002000000000000000{"\n"}
-                    (bootloader) 0000000
+
+                <p className="mt-3">
+                    into the text area above.
+                </p>
+
+                <h4 className="mt-5 font-semibold">
+                    Example:
+                </h4>
+
+                <pre className="mt-2 overflow-x-auto rounded-md bg-black/40 p-4 font-mono text-sm leading-6 text-white">
+{`(bootloader) 0A40040192024205#4C4D3556313230
+(bootloader) 30373731363031303332323239#BD00
+(bootloader) 8A672BA4746C2CE02328A2AC0C39F95
+(bootloader) 1A3E5#1F53280002000000000000000
+(bootloader) 0000000`}
                 </pre>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
