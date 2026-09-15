@@ -1,3 +1,7 @@
+// Next.js App Router entry point — automatically resolved by the framework.
+// This file is intentionally not imported by other source files.
+// See: https://nextjs.org/docs/app/building-your-application/routing
+
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";

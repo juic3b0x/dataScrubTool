@@ -1,4 +1,7 @@
-// juic3b0x 2024 - page.tsx
+// juic3b0x 2026 - page.tsx
+// Next.js App Router entry point — automatically resolved by the framework.
+// This file is intentionally not imported by other source files.
+// See: https://nextjs.org/docs/app/building-your-application/routing
 
 "use client";
 
