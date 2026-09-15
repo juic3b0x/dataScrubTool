@@ -1,6 +1,6 @@
 {
   "name": "bootloader-scrubber",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "overrides": {
     "postcss": "$postcss"
@@ -15,27 +15,28 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^7.2.0",
-    "@fortawesome/free-brands-svg-icons": "^7.2.0",
-    "@fortawesome/react-fontawesome": "^3.3.1",
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "^16.3.5",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
-    "@types/node": "^25.9.3",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@types/node": "^26.5.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitest/coverage-v8": "^5.0.0",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.9",
-    "postcss": "8.5.26",
-    "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.5",
+    "postcss": "8.5.28",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
     "vitest": "^5.0.0"
   }
 }
