@@ -1,61 +1,124 @@
-/* Import Tailwind's base, components, and utilities layers */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* juic3b0x 2026 - globals.css */
+/* Tailwind CSS 4 & Motorola Support Theme Integration */
 
-/* Define root variables for color schemes */
+@import "tailwindcss";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-primary: #001428;
+    --color-secondary: #315579;
+    --color-accent: #92c1e9;
+    --color-alert: #ff554d;
+
+    --font-sans: "Inter", sans-serif;
+
+    --background-image-gradient-radial: radial-gradient(
+        var(--tw-gradient-stops)
+    );
+
+    --background-image-gradient-conic: conic-gradient(
+        from 180deg at 50% 50%,
+        var(--tw-gradient-stops)
+    );
+}
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-/* Define dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --background-rgb: 10, 15, 26;
 }
 
-/* Set foreground and background colors based on color scheme preferences */
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+/*
+ * Base application styles.
+ */
+@layer base {
+    html,
+    body {
+        min-height: 100%;
+    }
+
+    body {
+        margin: 0;
+        background-color: rgb(var(--background-rgb));
+        color: rgb(var(--foreground-rgb));
+        font-family: var(--font-sans);
+    }
+
+    textarea,
+    input,
+    select {
+        font-family: inherit;
+    }
+
+    /*
+     * Dark form controls.
+     */
+    textarea,
+    input,
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border: 1px solid #315579 !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        outline: none;
+        box-shadow: none;
+    }
+
+    textarea:focus,
+    input:focus,
+    select:focus {
+        border-color: #92c1e9 !important;
+        box-shadow: 0 0 0 3px rgb(146 193 233 / 25%) !important;
+        outline: none !important;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+        color: #94a3b8 !important;
+        opacity: 1;
+    }
+
+    textarea:disabled,
+    input:disabled,
+    select:disabled {
+        background-color: #111827 !important;
+        color: #64748b !important;
+        cursor: not-allowed;
+    }
+
+    /*
+     * Submit / action buttons.
+     */
+    button {
+        font-family: inherit;
+    }
 }
 
-/* Utilities layer for additional classes */
-@layer utilities {
-  /* Balance text wrapping */
-  .text-balance {
+/*
+ * Custom Tailwind CSS 4 utilities.
+ */
+@utility text-balance {
     text-wrap: balance;
-  }
+}
 
-  /* Additional utility classes */
-  /* Class for center-aligning text horizontally and vertically */
-  .centered {
+@utility centered {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  /* Class for rounded buttons */
-  .rounded-button {
+@utility rounded-button {
     border-radius: 8px;
-  }
+}
 
-  /* Class for responsive font sizes */
-  .responsive-font {
+@utility responsive-font {
     font-size: clamp(1rem, 1.5vw, 2rem);
-  }
+}
 
-  /* Class for box shadows */
-  .shadow-box {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+@utility shadow-box {
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
